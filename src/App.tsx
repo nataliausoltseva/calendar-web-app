@@ -2,7 +2,6 @@ import * as React from 'react';
 import Modal from 'react-responsive-modal';
 import './App.css';
 import EventDetails from './components/EventDetails';
-import EventList from './components/EventList';
 import NovemberCalendar from './components/NovemberCalendar';
 
 
@@ -44,9 +43,6 @@ class App extends React.Component<{}, IState> {
 						<EventDetails currentEvent={this.state.currentEvent} />
 					</div>
 					<NovemberCalendar/>
-					<div className="col-5">
-						<EventList events = {this.state.events} selectNewEvent={this.selectNewEvent} searchByTag ={this.fetchMemes}/>
-					</div>
 				</div>
 			</div>
 			
