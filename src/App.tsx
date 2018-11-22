@@ -1,8 +1,9 @@
 import * as React from 'react';
 import Modal from 'react-responsive-modal';
 import './App.css';
-import EventDetails from './components/EventDetails';
+import EventList from './components/EventsList';
 import NovemberCalendar from './components/NovemberCalendar';
+
 
 
 interface IState {
@@ -38,12 +39,8 @@ class App extends React.Component<{}, IState> {
 				</div>
 			</div>
 			<div className="container">
-				<div className="row">
-					<div className="col-7">
-						<EventDetails currentEvent={this.state.currentEvent} />
-					</div>
-					<NovemberCalendar/>
-				</div>
+				<NovemberCalendar/>
+				<EventList/>
 			</div>
 			
 			<Modal open={open} onClose={this.onCloseModal}>
