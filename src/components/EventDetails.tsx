@@ -38,15 +38,31 @@ export default class eventDetail extends React.Component<IProps, IState> {
                 <Modal open={open} onClose={this.onCloseModal}>
                     <form>
                         <div className="form-group">
-                            <label>Event</label>
-                            <input type="text" className="form-control" id="event-edit-title-input" placeholder="Enter Title"/>
+                            <label>Event Name</label>
+                            <input type="text" className="form-control" id="november-event-edit-input" placeholder="Enter Event" />
                             <small className="form-text text-muted">You can edit any event later</small>
                         </div>
                         <div className="form-group">
+                            <label>Event Location</label>
+                            <input type="text" className="form-control" id="november-location-edit-input" placeholder="Enter Event Location" />
+                            <small className="form-text text-muted">You can edit any event location later</small>
+                        </div>
+                        <div className="form-group">
+                            <label>Event Start Time</label>
+                            <input type="text" className="form-control" id="november-event-start-edit-input" placeholder="Enter Event Start Time" />
+                            <small className="form-text text-muted">You can edit any event start time later</small>
+                        </div>
+                        <div className="form-group">
+                            <label>Event End Time</label>
+                            <input type="text" className="form-control" id="november-event-end-edit-input" placeholder="Enter Event End Time" />
+                            <small className="form-text text-muted">You can edit any event end time later</small>
+                        </div>
+                        <div className="form-group">
                             <label>Event Tag</label>
-                            <input type="text" className="form-control" id="event-edit-tag-input" placeholder="Enter Tag"/>
+                            <input type="text" className="form-control" id="event-tag-edit-input" placeholder="Enter Tag" />
                             <small className="form-text text-muted">Event Tag is used for search</small>
                         </div>
+
                         <button type="button" className="btn" onClick={this.updateEvent}>Save</button>
                     </form>
                 </Modal>

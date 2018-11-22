@@ -38,12 +38,12 @@ class App extends React.Component<{}, IState> {
 					<div className="btn btn-primary btn-action btn-add" onClick={this.onOpenModal}>Add Event</div>
 				</div>
 			</div>
-			<NovemberCalendar/>
 			<div className="container">
 				<div className="row">
 					<div className="col-7">
 						<EventDetails currentEvent={this.state.currentEvent} />
 					</div>
+					<NovemberCalendar/>
 					<div className="col-5">
 						<EventList events = {this.state.events} selectNewEvent={this.selectNewEvent} searchByTag ={this.fetchMemes}/>
 					</div>
@@ -54,8 +54,23 @@ class App extends React.Component<{}, IState> {
 				<form>
 					<div className="form-group">
 						<label>Event Name</label>
-						<input type="text" className="form-control" id="meme-title-input" placeholder="Enter Title" />
+						<input type="text" className="form-control" id="november-event-input" placeholder="Enter Event" />
 						<small className="form-text text-muted">You can edit any event later</small>
+					</div>
+					<div className="form-group">
+						<label>Event Location</label>
+						<input type="text" className="form-control" id="november-location-input" placeholder="Enter Event Location" />
+						<small className="form-text text-muted">You can edit any event location later</small>
+					</div>
+					<div className="form-group">
+						<label>Event Start Time</label>
+						<input type="text" className="form-control" id="november-event-start-input" placeholder="Enter Event Start Time" />
+						<small className="form-text text-muted">You can edit any event start time later</small>
+					</div>
+					<div className="form-group">
+						<label>Event End Time</label>
+						<input type="text" className="form-control" id="meme-tag-input" placeholder="Enter Event End Time" />
+						<small className="form-text text-muted">You can edit any event end time later</small>
 					</div>
 					<div className="form-group">
 						<label>Event Tag</label>
@@ -102,7 +117,8 @@ class App extends React.Component<{}, IState> {
 				currentEvent = {"id":0, "event":"No events","location":"No Location","start":"", "end":""}
 			}
 			this.setState({
-				currentEvent
+				currentEvent,
+				events: json
 			})
         });
 	}
