@@ -8,6 +8,8 @@
     ]
   },
   "rules": {
-    "no-console": false
+    "no-console": false,
+    "class-name": false,
+    "no-shadowed-variable": true
   }
 }

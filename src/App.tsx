@@ -2,8 +2,6 @@ import * as React from 'react';
 import Modal from 'react-responsive-modal';
 import './App.css';
 import EventDetails from './components/EventDetails';
-// import EventList from './components/EventList';
-import PatrickLogo from './patrick-logo.png';
 
 
 interface IState {
@@ -21,7 +19,6 @@ class App extends React.Component<{}, IState> {
 		
 		this.fetchMemes("")
 		this.selectNewEvent = this.selectNewEvent.bind(this)
-		// this.handleFileUpload = this.handleFileUpload.bind(this)
 		this.fetchMemes = this.fetchMemes.bind(this)
 		this.uploadMeme = this.uploadMeme.bind(this)
 		
@@ -33,7 +30,7 @@ class App extends React.Component<{}, IState> {
 		<div>
 			<div className="header-wrapper">
 				<div className="container header">
-					<img src={PatrickLogo} height='40'/>&nbsp; My Meme Bank - MSA 2018 &nbsp;
+					<img height='40'/>&nbsp; My November Event Bank &nbsp;
 					<div className="btn btn-primary btn-action btn-add" onClick={this.onOpenModal}>Add Meme</div>
 				</div>
 			</div>

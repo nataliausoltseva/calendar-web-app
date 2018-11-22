@@ -102,13 +102,13 @@ export default class eventDetail extends React.Component<IProps, IState> {
 
 		fetch(url, {
 			body: JSON.stringify({
-                "id": currentEvent.id,
+                "end": updatedEnd,
                 "event": updatedEvent,
+                "id": currentEvent.id,
                 "location": updatedLocation,
-                "uploaded": currentEvent.uploaded,
-                "url": currentEvent.url,
                 "start": updatedStart,
-                "end": updatedEnd
+                "uploaded": currentEvent.uploaded,
+                "url": currentEvent.url
             }),
 			headers: {'cache-control': 'no-cache','Content-Type': 'application/json'},
 			method: 'PUT'
