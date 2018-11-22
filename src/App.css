@@ -26,3 +26,35 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.header-wrapper {
+  margin-bottom: 30px;
+}
+
+.calander-view {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.calander-view .row{
+  flex-wrap: nowrap;
+}
+
+.calander-view__headers{
+  font-weight:bold 
+}
+
+.calander-view__day{
+  color: grey;
+}
+
+.calander-view__current-day{
+  color: black;
+}
+
+@media screen and (max-width: 400px) {
+  .calander-view .col{
+    min-width: 61.125px;
+  }
+}
+
