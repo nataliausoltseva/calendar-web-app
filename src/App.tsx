@@ -2,9 +2,12 @@ import * as React from 'react';
 import Modal from 'react-responsive-modal';
 import './App.css';
 import EventDetails from './components/EventDetails';
+import EventList from './components/EventList';
+import NovemberCalendar from './components/NovemberCalendar';
 
 
 interface IState {
+	events:any[]
 	currentEvent: any,
 	open: boolean
 }
@@ -14,13 +17,14 @@ class App extends React.Component<{}, IState> {
         super(props)
         this.state = {
 			currentEvent: {"id":0, "event":"Loading ", "location":"not found", "start":"2018-11-22T14:43:00", "end":"2018-11-22T22:50:00"},
+			events: [],
 			open: false
 		}     
 		
 		this.fetchMemes("")
 		this.selectNewEvent = this.selectNewEvent.bind(this)
 		this.fetchMemes = this.fetchMemes.bind(this)
-		this.uploadMeme = this.uploadMeme.bind(this)
+		this.uploadEvent 	= this.uploadEvent.bind(this)
 		
 	}
 
@@ -31,34 +35,34 @@ class App extends React.Component<{}, IState> {
 			<div className="header-wrapper">
 				<div className="container header">
 					<img height='40'/>&nbsp; My November Event Bank &nbsp;
-					<div className="btn btn-primary btn-action btn-add" onClick={this.onOpenModal}>Add Meme</div>
+					<div className="btn btn-primary btn-action btn-add" onClick={this.onOpenModal}>Add Event</div>
 				</div>
 			</div>
+			<NovemberCalendar/>
 			<div className="container">
 				<div className="row">
 					<div className="col-7">
 						<EventDetails currentEvent={this.state.currentEvent} />
 					</div>
+					<div className="col-5">
+						<EventList events = {this.state.events} selectNewEvent={this.selectNewEvent} searchByTag ={this.fetchMemes}/>
+					</div>
 				</div>
 			</div>
+			
 			<Modal open={open} onClose={this.onCloseModal}>
 				<form>
 					<div className="form-group">
-						<label>Meme Title</label>
+						<label>Event Name</label>
 						<input type="text" className="form-control" id="meme-title-input" placeholder="Enter Title" />
-						<small className="form-text text-muted">You can edit any meme later</small>
+						<small className="form-text text-muted">You can edit any event later</small>
 					</div>
 					<div className="form-group">
-						<label>Tag</label>
+						<label>Event Tag</label>
 						<input type="text" className="form-control" id="meme-tag-input" placeholder="Enter Tag" />
-						<small className="form-text text-muted">Tag is used for search</small>
+						<small className="form-text text-muted">Event Tag is used for search</small>
 					</div>
-					<div className="form-group">
-						<label>Image</label>
-						
-					</div>
-
-					<button type="button" className="btn" onClick={this.uploadMeme}>Upload</button>
+					<button type="button" className="btn" onClick={this.uploadEvent}>Upload</button>
 				</form>
 			</Modal>
 		</div>
@@ -85,7 +89,7 @@ class App extends React.Component<{}, IState> {
 	// GET memes
 	private fetchMemes(event: any) {
 		let url = "https://nucalendarapi.azurewebsites.net/api/Calendar"
-		if (event !== "") {
+		if (event !== "") {	
 			url += "/event?=" + event
 		}
         fetch(url, {
@@ -104,7 +108,7 @@ class App extends React.Component<{}, IState> {
 	}
 
 	// POST meme
-	private uploadMeme() {
+	private uploadEvent() {
 		const eventInput = document.getElementById("november-event-input") as HTMLInputElement
 		const locationInput = document.getElementById("november-location-input") as HTMLInputElement
 		const startInput = document.getElementById("november-event-start-input")as HTMLInputElement
