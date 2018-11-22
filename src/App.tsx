@@ -34,7 +34,7 @@ class App extends React.Component<{}, IState> {
 		<div>
 			<div className="header-wrapper">
 				<div className="container header">
-					<img height='40'/>&nbsp; My November Event Bank &nbsp;
+					<img height='40'/>&nbsp; November Events &nbsp;
 					<div className="btn btn-primary btn-action btn-add" onClick={this.onOpenModal}>Add Event</div>
 				</div>
 			</div>

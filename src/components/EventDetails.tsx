@@ -31,10 +31,7 @@ export default class eventDetail extends React.Component<IProps, IState> {
                 <div className="row event-date">
                     {currentEvent.uploaded}
                 </div>                
-                <div className="row event-done-button">
-                    <div className="btn btn-primary btn-action" onClick={this.onOpenModal}>Edit </div>
-                    <div className="btn btn-primary btn-action" onClick={this.deleteEvent.bind(this, currentEvent.id)}>Delete </div>
-                </div>
+                
                 <Modal open={open} onClose={this.onCloseModal}>
                     <form>
                         <div className="form-group">
@@ -70,33 +67,12 @@ export default class eventDetail extends React.Component<IProps, IState> {
 		);
     }
 
-    // Modal Open
-    private onOpenModal = () => {
-        this.setState({ open: true });
-	};
-    
+
     // Modal Close
     private onCloseModal = () => {
 		this.setState({ open: false });
 	};
 
-    // DELETE event
-    private deleteEvent(id: any) {
-        const url = "https://nucalendarapi.azurewebsites.net/api/Calendar/" + id
-
-		fetch(url, {
-			method: 'DELETE'
-		})
-        .then((response : any) => {
-			if (!response.ok) {
-				// Error Response
-				alert(response.statusText)
-			}
-			else {
-              location.reload()
-			}
-		  })
-    }
 
     // PUT event
     private updateEvent(){
