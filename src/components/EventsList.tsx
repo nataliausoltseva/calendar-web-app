@@ -30,7 +30,7 @@ export default class EventsList extends React.Component<IProps> {
                                 <td>{x.event}</td>
                                 <td>{x.location}</td>
                                 <td className="btn btn-primary btn-action" onClick={this.onOpenModal}>Edit </td>
-                                <td className="btn btn-primary btn-action" onClick={this.deleteEvent}>Delete </td>
+                                <td className="btn btn-primary btn-action" onClick={this.deleteEvent(x.id)}>Delete </td>
                             </tr>
                         )
                     })}
@@ -40,7 +40,7 @@ export default class EventsList extends React.Component<IProps> {
     }
 
     // DELETE event
-    private deleteEvent(id: any) {
+    private deleteEvent = (id: number) => (event: React.MouseEvent<HTMLElement>) => {
         const url = "https://nucalendarapi.azurewebsites.net/api/Calendar/" + id
 
         fetch(url, {
@@ -60,6 +60,4 @@ export default class EventsList extends React.Component<IProps> {
     private onOpenModal = () => {
         this.setState({ open: true });
     };
-
-
 }
