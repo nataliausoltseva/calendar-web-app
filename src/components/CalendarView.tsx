@@ -1,14 +1,19 @@
 import * as React from "react";
 
+interface  IProps{
+  selectedDate: Date;
+  updateSelectedDate:(selectedDate: Date)=> void;
+}
 
-export default class CalendarView extends React.Component {
+export default class CalendarView extends React.Component<IProps> {
   public render() {
-    const generatedOuput = this.generateCalanderForThisMonth(new Date());
+    const {selectedDate} = this.props;
+    const generatedOuput = this.generateCalanderForThisMonth(selectedDate);
 
     return (
       <div className="calander-view">
         <div className="row calander-view__headers">
-        <div className="d-none d-lg-block col">Sunday</div>
+          <div className="d-none d-lg-block col">Sunday</div>
           <div className="d-none d-lg-block col">Monday</div>
           <div className="d-none d-lg-block col">Tuesday</div>
           <div className="d-none d-lg-block col">Wednesday</div>
@@ -28,9 +33,11 @@ export default class CalendarView extends React.Component {
       </div>
     );
   }
-  public onClick=(event: React.MouseEvent<HTMLElement>)=>{
-    console.log(event)
-};
+  public onClick = (selectedDateISO: string) =>
+    (event: React.MouseEvent<HTMLElement>) => {
+      const selectedDate = new Date(Date.parse(selectedDateISO));
+      this.props.updateSelectedDate(selectedDate)
+    };
 
   private generateCalanderForThisMonth(selectedDate: Date): any {
     const y = selectedDate.getFullYear();
@@ -50,7 +57,7 @@ export default class CalendarView extends React.Component {
       for (let day = 0; day < 7; day++) {
         const monthStyle = displayDate.getMonth() === m ? "calander-view__current-day" : "";
         days.push(
-          <div key={displayDate.toISOString()}className={"col calander-view__day " + monthStyle}>{displayDate.getDate()}</div>
+          <div onClick={this.onClick(displayDate.toISOString())} key={displayDate.toISOString()} className={"col calander-view__day " + monthStyle}>{displayDate.getDate()}</div>
         );
         displayDate.setDate(displayDate.getDate() + 1);
       }

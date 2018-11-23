@@ -7,7 +7,8 @@ import EventList from './components/EventsList';
 
 interface IState {
 	events:any[],
-	open: boolean
+	open: boolean,
+	selectedDate: Date
 }
 
 class App extends React.Component<{}, IState> {
@@ -15,7 +16,8 @@ class App extends React.Component<{}, IState> {
         super(props)
         this.state = {
 			events: [],
-			open: false
+			open: false,
+			selectedDate: new Date
 		}     
 		
 		this.fetchMemes()
@@ -34,8 +36,8 @@ class App extends React.Component<{}, IState> {
 				</div>
 			</div>
 			<div className="container">
-				<CalendarView/>
-				<EventList events={this.state.events}/>
+				<CalendarView selectedDate={this.state.selectedDate} updateSelectedDate={this.updateSelectedDate}/>
+				<EventList events={this.state.events} selectedDate={this.state.selectedDate}/>
 				<div className="btn btn-primary btn-action btn-add" onClick={this.onOpenModal}>Add Event</div>
 			</div>
 			
@@ -71,6 +73,10 @@ class App extends React.Component<{}, IState> {
 			</Modal>
 		</div>
 		);
+	}
+
+	private updateSelectedDate=(selectedDate: Date): void=> {
+		this.setState({selectedDate})
 	}
 
 	// Modal open
