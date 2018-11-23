@@ -56,8 +56,9 @@ export default class CalendarView extends React.Component<IProps> {
       const days = [];
       for (let day = 0; day < 7; day++) {
         const monthStyle = displayDate.getMonth() === m ? "calander-view__current-day" : "";
+        const selectedDateStyle = selectedDate.getTime() === displayDate.getTime() ? "calander-view__selected-day" : "";
         days.push(
-          <div onClick={this.onClick(displayDate.toISOString())} key={displayDate.toISOString()} className={"col calander-view__day " + monthStyle}>{displayDate.getDate()}</div>
+          <div onClick={this.onClick(displayDate.toISOString())} key={displayDate.toISOString()} className={`col calander-view__day  ${monthStyle}  ${selectedDateStyle}`}>{displayDate.getDate()}</div>
         );
         displayDate.setDate(displayDate.getDate() + 1);
       }

@@ -52,6 +52,10 @@
   color: black;
 }
 
+.calander-view__selected-day{
+  background-color: green;
+}
+
 @media screen and (max-width: 400px) {
   .calander-view .col{
     min-width: 61.125px;

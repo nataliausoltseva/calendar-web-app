@@ -1,8 +1,10 @@
+import * as moment from 'moment';
 import * as React from 'react';
 import Modal from 'react-responsive-modal';
 import './App.css';
 import CalendarView from './components/CalendarView';
 import EventList from './components/EventsList';
+
 
 
 interface IState {
@@ -17,7 +19,7 @@ class App extends React.Component<{}, IState> {
         this.state = {
 			events: [],
 			open: false,
-			selectedDate: new Date
+			selectedDate: new Date(new Date().setHours(0,0,0,0))
 		}     
 		
 		this.fetchMemes()
@@ -27,12 +29,13 @@ class App extends React.Component<{}, IState> {
 	}
 
 	public render() {
-		const { open } = this.state;
+		const { open, selectedDate } = this.state;
+		const title = moment(selectedDate).format("MMMM ")  + moment(selectedDate).format("YYYY") + " Events"
 		return (
 		<div>
 			<div className="header-wrapper">
 				<div className="container header">
-					<img height='40'/>&nbsp; November Events &nbsp;
+					<img height='40'/>&nbsp; {title} &nbsp;
 				</div>
 			</div>
 			<div className="container">
