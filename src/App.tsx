@@ -5,11 +5,8 @@ import CalendarView from './components/CalendarView';
 import EventList from './components/EventsList';
 
 
-
-
 interface IState {
-	events:any[]
-	currentEvent: any,
+	events:any[],
 	open: boolean
 }
 
@@ -17,13 +14,11 @@ class App extends React.Component<{}, IState> {
 	constructor(props: any) {
         super(props)
         this.state = {
-			currentEvent: {"id":0, "event":"Loading ", "location":"not found", "start":"2018-11-22T14:43:00", "end":"2018-11-22T22:50:00"},
 			events: [],
 			open: false
 		}     
 		
-		this.fetchMemes("")
-		this.selectNewEvent = this.selectNewEvent.bind(this)
+		this.fetchMemes()
 		this.fetchMemes = this.fetchMemes.bind(this)
 		this.uploadEvent 	= this.uploadEvent.bind(this)
 		
@@ -40,7 +35,7 @@ class App extends React.Component<{}, IState> {
 			</div>
 			<div className="container">
 				<CalendarView/>
-				<EventList/>
+				<EventList events={this.state.events}/>
 				<div className="btn btn-primary btn-action btn-add" onClick={this.onOpenModal}>Add Event</div>
 			</div>
 			
@@ -87,35 +82,21 @@ class App extends React.Component<{}, IState> {
 	private onCloseModal = () => {
 		this.setState({ open: false });
 	};
-	
-	// Change selected meme
-	private selectNewEvent(newMeme: any) {
-		this.setState({
-			currentEvent: newMeme
-		})
-	}
 
 	// GET memes
-	private fetchMemes(event: any) {
-		let url = "https://nucalendarapi.azurewebsites.net/api/Calendar"
-		if (event !== "") {	
-			url += "/event?=" + event
-		}
-        fetch(url, {
-            method: 'GET'
-        })
-        .then(res => res.json())
-        .then(json => {
-			let currentEvent = json[0]
-			if (currentEvent === undefined) {
-				currentEvent = {"id":0, "event":"No events","location":"No Location","start":"", "end":""}
-			}
+	private fetchMemes() {
+		const url = "https://nucalendarapi.azurewebsites.net/api/Calendar";
+		fetch(url, {
+		  method: "GET"
+		})
+		  .then(res => res.json())
+		  .then(data => {
+			const events: Event[] = data;
 			this.setState({
-				currentEvent,
-				events: json
-			})
-        });
-	}
+			  events
+			});
+		  });
+	  }
 
 	// POST meme
 	private uploadEvent() {

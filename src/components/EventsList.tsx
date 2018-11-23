@@ -4,28 +4,13 @@ import { IEvent } from "../Event";
 
 
 interface IProps {
-    events?: IEvent[];
+    events: IEvent[];
 }
 
 export default class EventsList extends React.Component<IProps> {
     public render() {
-        let { events } = this.props;
-        events = [];
-        events.push({
-            end: this.context,
-            event: "string",
-            id: 1,
-            location: "string",
-            start: "2018-11-22T08:58:48.42"
-        });
-
-        events.push({
-            end: "2018-11-22T10:51:13.687",
-            event: "string",
-            id: 6,
-            location: "string",
-            start: "2018-11-22T09:51:13.687"
-        });
+        const { events } = this.props;
+        
         return (
             <table className="table table-striped">
                 <thead>
