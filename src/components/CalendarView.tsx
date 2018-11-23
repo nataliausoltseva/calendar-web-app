@@ -1,13 +1,13 @@
 import * as React from "react";
 
-interface  IProps{
+interface IProps {
   selectedDate: Date;
-  updateSelectedDate:(selectedDate: Date)=> void;
+  updateSelectedDate: (selectedDate: Date) => void;
 }
 
 export default class CalendarView extends React.Component<IProps> {
   public render() {
-    const {selectedDate} = this.props;
+    const { selectedDate } = this.props;
     const generatedOuput = this.generateCalanderForThisMonth(selectedDate);
 
     return (
@@ -33,11 +33,12 @@ export default class CalendarView extends React.Component<IProps> {
       </div>
     );
   }
-  public onClick = (selectedDateISO: string) =>
-    (event: React.MouseEvent<HTMLElement>) => {
-      const selectedDate = new Date(Date.parse(selectedDateISO));
-      this.props.updateSelectedDate(selectedDate)
-    };
+  public onClick = (selectedDateISO: string) => (
+    event: React.MouseEvent<HTMLElement>
+  ) => {
+    const selectedDate = new Date(Date.parse(selectedDateISO));
+    this.props.updateSelectedDate(selectedDate);
+  };
 
   private generateCalanderForThisMonth(selectedDate: Date): any {
     const y = selectedDate.getFullYear();
@@ -55,15 +56,30 @@ export default class CalendarView extends React.Component<IProps> {
     for (let row = 0; row < 6; row++) {
       const days = [];
       for (let day = 0; day < 7; day++) {
-        const monthStyle = displayDate.getMonth() === m ? "calander-view__current-day" : "";
-        const selectedDateStyle = selectedDate.getTime() === displayDate.getTime() ? "calander-view__selected-day" : "";
+        const monthStyle =
+          displayDate.getMonth() === m ? "calander-view__current-day" : "";
+        const selectedDateStyle =
+          selectedDate.getTime() === displayDate.getTime()
+            ? "calander-view__selected-day"
+            : "";
         days.push(
-          <div onClick={this.onClick(displayDate.toISOString())} key={displayDate.toISOString()} className={`col calander-view__day  ${monthStyle}  ${selectedDateStyle}`}>{displayDate.getDate()}</div>
+          <div className={`col calander-view__day`}
+          key={displayDate.toISOString()}>
+            <div className={`calander-view__day-number ${monthStyle} ${selectedDateStyle}`}
+              onClick={this.onClick(displayDate.toISOString())}             
+            >
+              {displayDate.getDate()}
+            </div>
+          </div>
         );
         displayDate.setDate(displayDate.getDate() + 1);
       }
 
-      rows.push(<div key={row} className="row">{days}</div>);
+      rows.push(
+        <div key={row} className="row">
+          {days}
+        </div>
+      );
     }
     return rows;
   }

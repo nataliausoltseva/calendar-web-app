@@ -70,8 +70,8 @@ body{
 
 .btn-action{
   font-family: Helvetica;
-  background-color:blue;
-  border-color: blue;
+  background-color:rgb(32, 124, 245);
+  border-color: rgb(32, 124, 245);
   margin-right: 10px;
   font-size:14px;
   border-radius: 8px;
@@ -80,6 +80,10 @@ body{
 .btn-action:hover {
   background-color: lightblue;
   border-color: lightblue
+}
+
+.add-event-button-container{
+  position: relative;
 }
 
 .btn-add {
@@ -100,8 +104,8 @@ body{
 }
 
 .search-button:hover {
-  background-color: blue;
-  border-color: blue;
+  background-color: rgb(32, 124, 245);
+  border-color: rgb(32, 124, 245);
   color: white;
 }
 
