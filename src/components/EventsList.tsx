@@ -41,13 +41,10 @@ export default class EventsList extends React.Component<IProps> {
                             <tr key={x.id}>
                                 <td>{moment(x.start).format("HH:mm") + " - " + moment(x.end).format("HH:mm")}</td>
                                 <td>{x.event}</td>
-                                <td>{x.location}</td>
-                                <td>               
-                                    <td className="btn btn-primary btn-action" onClick={this.onOpenModal}>Edit </td>
-                                    <td className="btn btn-primary btn-action" onClick={this.deleteEvent}>Delete </td>
-                                </td>
+                                <td>{x.location}</td>               
+                                <td className="btn btn-primary btn-action" onClick={this.onOpenModal}>Edit </td>
+                                <td className="btn btn-primary btn-action" onClick={this.deleteEvent}>Delete </td>
                             </tr>
-                            
                         )
                     })}
                 </tbody>

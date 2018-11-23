@@ -1,8 +1,9 @@
 import * as React from 'react';
 import Modal from 'react-responsive-modal';
 import './App.css';
+import CalendarView from './components/CalendarView';
 import EventList from './components/EventsList';
-import NovemberCalendar from './components/NovemberCalendar';
+
 
 
 
@@ -38,7 +39,7 @@ class App extends React.Component<{}, IState> {
 				</div>
 			</div>
 			<div className="container">
-				<NovemberCalendar/>
+				<CalendarView/>
 				<EventList/>
 				<div className="btn btn-primary btn-action btn-add" onClick={this.onOpenModal}>Add Event</div>
 			</div>

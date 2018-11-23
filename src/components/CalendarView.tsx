@@ -1,7 +1,7 @@
 import * as React from "react";
 
 
-export default class CalanderView extends React.Component {
+export default class CalendarView extends React.Component {
   public render() {
     const generatedOuput = this.generateCalanderForThisMonth(new Date());
 
@@ -50,12 +50,12 @@ export default class CalanderView extends React.Component {
       for (let day = 0; day < 7; day++) {
         const monthStyle = displayDate.getMonth() === m ? "calander-view__current-day" : "";
         days.push(
-          <div className={"col calander-view__day " + monthStyle}>{displayDate.getDate()}</div>
+          <div key={displayDate.toISOString()}className={"col calander-view__day " + monthStyle}>{displayDate.getDate()}</div>
         );
         displayDate.setDate(displayDate.getDate() + 1);
       }
 
-      rows.push(<div className="row">{days}</div>);
+      rows.push(<div key={row} className="row">{days}</div>);
     }
     return rows;
   }
