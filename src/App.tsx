@@ -4,10 +4,12 @@ import Modal from 'react-responsive-modal';
 import './App.css';
 import CalendarView from './components/CalendarView';
 import EventList from './components/EventsList';
+import DatePicker from 'react-datepicker';
 
 
 
 interface IState {
+	currentEvent: any,
 	events:any[],
 	open: boolean,
 	selectedDate: Date
@@ -17,6 +19,7 @@ class App extends React.Component<{}, IState> {
 	constructor(props: any) {
         super(props)
         this.state = {
+			currentEvent:{"id":0, "event":"", "location":"", "start":"", "end":""},
 			events: [],
 			open: false,
 			selectedDate: new Date(new Date().setHours(0,0,0,0))
@@ -41,7 +44,7 @@ class App extends React.Component<{}, IState> {
 			<div className="container">
 				<CalendarView selectedDate={this.state.selectedDate} updateSelectedDate={this.updateSelectedDate}/>
 				<EventList events={this.state.events} selectedDate={this.state.selectedDate}/>
-				<div className="btn btn-primary btn-action btn-add" onClick={this.onOpenModal}>Add Event</div>
+				<DatePicker showTimeSelect showTimeSelectOnly dateFormat="h:mm" timeCaption="Time" selected={this.state.currentEvent} onChange={this.updateSelectedDate}>Add Event</DatePicker>
 			</div>
 			
 			<Modal open={open} onClose={this.onCloseModal}>
@@ -82,11 +85,7 @@ class App extends React.Component<{}, IState> {
 		this.setState({selectedDate})
 	}
 
-	// Modal open
-	private onOpenModal = () => {
-		this.setState({ open: true });
-	  };
-	
+
 	// Modal close
 	private onCloseModal = () => {
 		this.setState({ open: false });
