@@ -12,7 +12,7 @@ export default class EventsList extends React.Component<IProps> {
         let { events } = this.props;
         events = [];
         events.push({
-            end: "2018-11-22T08:58:48.42",
+            end: this.context,
             event: "string",
             id: 1,
             location: "string",
@@ -47,6 +47,7 @@ export default class EventsList extends React.Component<IProps> {
                                     <td className="btn btn-primary btn-action" onClick={this.deleteEvent}>Delete </td>
                                 </td>
                             </tr>
+                            
                         )
                     })}
                 </tbody>

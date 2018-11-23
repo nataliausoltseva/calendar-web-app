@@ -1,5 +1,6 @@
 import * as React from "react";
 
+
 export default class CalanderView extends React.Component {
   public render() {
     const generatedOuput = this.generateCalanderForThisMonth(new Date());
@@ -27,7 +28,9 @@ export default class CalanderView extends React.Component {
       </div>
     );
   }
-
+  public onClick=(event: React.MouseEvent<HTMLElement>)=>{
+    console.log(event)
+};
 
   private generateCalanderForThisMonth(selectedDate: Date): any {
     const y = selectedDate.getFullYear();
@@ -47,7 +50,7 @@ export default class CalanderView extends React.Component {
       for (let day = 0; day < 7; day++) {
         const monthStyle = displayDate.getMonth() === m ? "calander-view__current-day" : "";
         days.push(
-          <div className={"col calander-view__day " + monthStyle} onClick={Date}>{displayDate.getDate()}</div>
+          <div className={"col calander-view__day " + monthStyle}>{displayDate.getDate()}</div>
         );
         displayDate.setDate(displayDate.getDate() + 1);
       }

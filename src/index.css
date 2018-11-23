@@ -70,19 +70,16 @@ body{
 
 .btn-action{
   font-family: Helvetica;
-  background-color:#f5a623;
-  border-color: #f5a623;
-  height:40px;
+  background-color:blue;
+  border-color: blue;
   margin-right: 10px;
-  font-size:18px;
+  font-size:14px;
   border-radius: 8px;
-  padding-left: 20px;
-  padding-right: 20px;
 }
 
 .btn-action:hover {
-  background-color: #d18c1b;
-  border-color: #d18c1b;
+  background-color: lightblue;
+  border-color: lightblue
 }
 
 .btn-add {
@@ -103,8 +100,8 @@ body{
 }
 
 .search-button:hover {
-  background-color: #d18c1b;
-  border-color: #d18c1b;
+  background-color: blue;
+  border-color: blue;
   color: white;
 }
 

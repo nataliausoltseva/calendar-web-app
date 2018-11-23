@@ -35,12 +35,12 @@ class App extends React.Component<{}, IState> {
 			<div className="header-wrapper">
 				<div className="container header">
 					<img height='40'/>&nbsp; November Events &nbsp;
-					<div className="btn btn-primary btn-action btn-add" onClick={this.onOpenModal}>Add Event</div>
 				</div>
 			</div>
 			<div className="container">
 				<NovemberCalendar/>
 				<EventList/>
+				<div className="btn btn-primary btn-action btn-add" onClick={this.onOpenModal}>Add Event</div>
 			</div>
 			
 			<Modal open={open} onClose={this.onCloseModal}>
