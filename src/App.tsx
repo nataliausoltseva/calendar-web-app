@@ -38,7 +38,7 @@ class App extends React.Component<{}, IState> {
       <div>
         <div className="header-wrapper">
           <div className="container header">
-            <img height="40" />
+            <i className="fa fa-calendar" aria-hidden="true" />
             &nbsp; {title} &nbsp;
           </div>
         </div>
