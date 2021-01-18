@@ -1,6 +1,6 @@
 # Calendar-App
 
-This wed-app is based on the [Calendar-API] (https://github.com/nataliausoltseva/Calendar-API).
+This wed-app is based on the [Calendar-API](https://github.com/nataliausoltseva/Calendar-API).
 
 ### How to use it:
 If a user wants to create an event then they have to provide:
