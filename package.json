@@ -4,13 +4,20 @@
   "private": true,
   "dependencies": {
     "@types/react-datepicker": "^1.1.7",
+    "is-svg": "^4.3.1",
     "moment": "^2.22.2",
+    "node-notifier": "^9.0.1",
     "react": "^16.6.0",
     "react-bootstrap": "^0.32.4",
     "react-datepicker": "^1.8.0",
+    "react-dev-utils": "^11.0.4",
     "react-dom": "^16.6.0",
     "react-responsive-modal": "^3.5.0",
-    "react-scripts-ts": "3.1.0"
+    "react-scripts-ts": "3.1.0",
+    "sockjs": "^0.3.21",
+    "ssri": "^8.0.1",
+    "urijs": "^1.19.6",
+    "y18n": "^5.0.8"
   },
   "scripts": {
     "start": "react-scripts-ts start",
