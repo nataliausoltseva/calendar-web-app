@@ -23,7 +23,7 @@
     "sockjs": "^0.3.21",
     "ssri": "^8.0.1",
     "ua-parser-js": "^0.7.28",
-    "urijs": "^1.19.6",
+    "urijs": "^1.19.7",
     "url-parse": "^1.5.1",
     "url-parser": "^0.0.1",
     "webpack-dev-server": "^3.11.2",
